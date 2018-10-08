@@ -13,7 +13,7 @@
     <p>Welcome to <%= title %> !</p>
     <h3>TODO LIST</h3>
 
-    <form method="post">
+    <form action="/task-done" method="post">
         <div>
             <label>
                 <% if(todo!=(null||"")){
@@ -26,8 +26,7 @@
                 <%}%>
             </label>
         </div>
-        <button type="button" id="task-done" onclick="location.href='/task-done'">done</button>
-        <button type="button" id="task-done" onclick="location.href='/task-undone'">undone</button>
+        <button type="submit">done</button>
     </form>
 
     <form action="/task-register" method="post" autocomplete="on">

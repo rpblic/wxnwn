@@ -23,6 +23,7 @@ MongoClient.connect(mongoUrl, function (err, client) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
     todo.find({}, function (err, docs) {
+        if (err) throw err;
         console.log(docs);
         res.render('index',{
             title: 'Express',
@@ -57,7 +58,7 @@ router.post('/task-register', function(req, res) {
     task.save(function (err) {
         if (err) throw err;
         res.redirect('/');
-    })
+    });
 
     /* MongoDB Implement
     MongoClient.connect(mongoUrl, function (err, client) {
@@ -103,10 +104,10 @@ router.post('/task-done', function(req, res) {
     var objectId = [];
     if (Array.isArray(checked)) {
         for (var i in checked) {
-            objectId.push(new ObjectID(checked[i]));
+            objectId.push(checked[i]);
         }
     } else {
-        objectId.push(new ObjectID(checked));
+        objectId.push(checked);
     }
 
     todo.update({'_id': {$in:objectId}}, {$set:{'done': true}},
@@ -135,10 +136,10 @@ router.post('/task-undone', function(req, res) {
     var objectId = [];
     if (Array.isArray(checked)) {
         for (var i in checked) {
-            objectId.push(new ObjectID(checked[i]));
+            objectId.push(checked[i]);
         }
     } else {
-        objectId.push(new ObjectID(checked));
+        objectId.push(checked);
     }
 
     todo.update({'_id': {$in:objectId}}, {$set:{'done': false}},
