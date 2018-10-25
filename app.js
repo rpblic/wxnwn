@@ -17,8 +17,10 @@ var usersRouter = require('./routes/users');
 //     console.log('Connected with Mongoose.');
 // });
 
-var mongoose_connect = require('./server/mongoose');
-mongoose_connect();
+var mongooseConnect = require('./server/mongoose');
+var mysqlConnect = require('./server/mysql');
+mongoDB = mongooseConnect();
+mysqlDB = mysqlConnect();
 
 var app = express();
 

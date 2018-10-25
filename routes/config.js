@@ -1,17 +1,22 @@
 exports.jsonUrl = 'public/todo.json';
-exports.mongoId = function () {
+exports.dbId = function () {
     return 'rpblic';
 }
-exports.mongoPassword = function () {
+exports.dbPassword = function () {
     return '4yw6rtht426u';
 }
-exports.mongoLocalhost = function () {
+exports.dbLocalhost = function () {
     return 'localhost'
 }
 exports.mongoPort = function() {
     return '27017'
 }
-exports.mongoDBname = function () {
+
+exports. mysqlPort = function() {
+    return '3306'
+}
+
+exports.dbDBname = function () {
     return 'wxnwn'
 }
 
@@ -22,4 +27,4 @@ exports.mongoDBname = function () {
 // sudo service mongodb status
 // mongo --port 27017
 // db.auth("id", "password")
-// DEBUG=wxnwn:* node ./bin/www
+// DEBUG=wxnwn:* npm start

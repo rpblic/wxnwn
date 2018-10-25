@@ -1,8 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var dataIO = require('./dataIO.js');
-// var setDoneToTrue = require('./setDoneToTrue.js');
-// var dbpath = require('./dbpath.js').jsonUrl;
 var todo = require('./schema/todo.js');
 
 /*
