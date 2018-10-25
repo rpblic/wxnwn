@@ -8,14 +8,17 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var mongoose = require('mongoose');
-var mongoUrl = require('./routes/config.js').mongoUrl();
-mongoose.connect(mongoUrl);
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Connection Error '));
-db.once('open', function () {
-    console.log('Connected with Mongoose.');
-});
+// var mongoose = require('mongoose');
+// var mongoUrl = require('./routes/config.js').mongoUrl();
+// mongoose.connect(mongoUrl);
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'Connection Error '));
+// db.once('open', function () {
+//     console.log('Connected with Mongoose.');
+// });
+
+var mongoose_connect = require('./server/mongoose');
+mongoose_connect();
 
 var app = express();
 

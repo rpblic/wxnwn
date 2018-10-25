@@ -3,7 +3,6 @@ var router = express.Router();
 var dataIO = require('./dataIO.js');
 // var setDoneToTrue = require('./setDoneToTrue.js');
 // var dbpath = require('./dbpath.js').jsonUrl;
-var mongoUrl = require('./config.js').mongoUrl();
 var todo = require('./schema/todo.js');
 
 /*
