@@ -1,10 +1,10 @@
-<template lang=''>
-
-</template>
 <script>
-export default {
-
-}
+var app = new Vue({
+    el: '#app',
+    data:{
+        name: 'Hello Vue!'
+    }
+})
 </script>
 <style lang=''>
 
