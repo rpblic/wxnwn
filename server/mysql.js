@@ -1,9 +1,9 @@
 var mysql      = require('mysql');
-var mysqlId = require('../routes/config').dbId();
-var mysqlPassword = require('../routes/config').dbPassword();
-var mysqlLocalhost = require('../routes/config').dbLocalhost();
-var mysqlPort = require('../routes/config').mysqlPort();
-var mysqlDBname = require('../routes/config').dbDBname();
+var mysqlId = require('../config/dbconfig').dbId();
+var mysqlPassword = require('../config/dbconfig').dbPassword();
+var mysqlLocalhost = require('../config/dbconfig').dbLocalhost();
+var mysqlPort = require('../config/dbconfig').mysqlPort();
+var mysqlDBname = require('../config/dbconfig').dbDBname();
 
 {/* 
 mysqlDB.query('SELECT * from Persons', function(err, rows, fields) {

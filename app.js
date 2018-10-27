@@ -3,24 +3,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
 // var favicon = require('serve-favicon');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
-// var mongoose = require('mongoose');
-// var mongoUrl = require('./routes/config.js').mongoUrl();
-// mongoose.connect(mongoUrl);
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'Connection Error '));
-// db.once('open', function () {
-//     console.log('Connected with Mongoose.');
-// });
+var streamviewRouter = require('./routes/streamview');
+var channelviewRouter = require('./routes/channelview');
+var uploadRouter = require('./routes/upload');
 
 var mongooseConnect = require('./server/mongoose');
 var mysqlConnect = require('./server/mysql');
-mongoDB = mongooseConnect();
-mysqlDB = mysqlConnect();
 
 var app = express();
 
@@ -37,8 +30,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+mongoDB = mongooseConnect();
+mysqlDB = mysqlConnect();
+app.use(mongoDB);
+app.use(mysqlDB);
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.user('/streamview', streamviewRouter);
+app.user('/channelview', channelviewRouter);
+app.user('/upload', uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

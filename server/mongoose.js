@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
-var mongoId = require('../routes/config').dbId();
-var mongoPassword = require('../routes/config').dbPassword();
-var mongoLocalhost = require('../routes/config').dbLocalhost();
-var mongoPort = require('../routes/config').mongoPort();
-var mongoDBname = require('../routes/config').dbDBname();
+var mongoId = require('../config/dbconfig').dbId();
+var mongoPassword = require('../config/dbconfig').dbPassword();
+var mongoLocalhost = require('../config/dbconfig').dbLocalhost();
+var mongoPort = require('../config/dbconfig').mongoPort();
+var mongoDBname = require('../config/dbconfig').dbDBname();
 
 var util = require('util');
 
@@ -34,7 +34,7 @@ module.exports = function(){
     connect(mongoId, mongoPassword, mongoLocalhost, mongoPort, mongoDBname);
     var mongoDB = mongoose.connection;
     mongoDB.on('disconnected', connect);
-    require('../routes/schema/todo.js')
+    require('./schema/todo.js')
 
     return mongoDB        
 }
