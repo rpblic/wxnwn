@@ -7,7 +7,6 @@ var mongoDBname = require('../config/dbconfig').dbDBname();
 
 var util = require('util');
 
-
 module.exports = function(){
     function connect(id, password, host, port, dbname) {
         var mongoUrl = util.format(
