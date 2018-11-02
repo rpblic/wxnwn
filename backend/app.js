@@ -11,6 +11,7 @@ var usersRouter = require('./routes/users/users');
 var streamviewRouter = require('./routes/streamview');
 var channelviewRouter = require('./routes/channelview');
 var uploadRouter = require('./routes/upload');
+var connectHistoryApiFallback = require('connect-history-api-fallback');
 
 var mongooseConnect = require('./server/mongoose');
 var mysqlConnect = require('./server/mysql');
@@ -28,6 +29,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(connectHistoryApiFallback());
 app.use(express.static(path.join(__dirname, 'public')));
 
 mongoDB = mongooseConnect();
