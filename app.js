@@ -7,7 +7,7 @@ var logger = require('morgan');
 // var favicon = require('serve-favicon');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/users/users');
 var streamviewRouter = require('./routes/streamview');
 var channelviewRouter = require('./routes/channelview');
 var uploadRouter = require('./routes/upload');
