@@ -5,6 +5,8 @@ var getUserSession = require('../IO/userIO').getUserSession;
 var setStreamServer = require('../IO/streamIO').setStreamServer;
 var getCurrentStreamServer = require('../IO/streamIO').getCurrentStreamServer;
 var getCurrentVideoInfo = require('../IO/stateIO').getCurrentVideoInfo;
+var channelEventEmitter = require('../IO/streamEvents').channelEE;
+var videoEventEmitter = require('../IO/streamEvents').videoEE;
 
 /* GET channelview page. */
 router.get('/:channel', function(req, res, next) {
@@ -21,6 +23,8 @@ router.get('/:channel', function(req, res, next) {
     });
 });
 
+module.exports = router;
+/*
 router.get('/insertchannel/:channelid', function(req, res, next){
     var channelid = req.params.channelid;
     streamServer = getCurrentStreamServer();
@@ -42,3 +46,4 @@ router.get('/downvotevideo', function(req, res, next){
     var currentVideoInfo = getCurrentVideoInfo();
     console.log("downvote video", currentVideoInfo.name, "with playtime", currentVideoInfo.playtime);
 });
+*/
