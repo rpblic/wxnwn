@@ -1,6 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+
+import IndexPage from '@/components/index/IndexPage'
+import ChannelRecommendation from '@/components/index/ChannelRecommendation'
+
+import StreamViewPage from '@/components/streamview/StreamViewPage'
+import UploadPage from '@/components/upload/UploadPage'
+import UserPropertyPage from '@/components/userproperty/UserPropertyPage'
+import Helloworld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
@@ -9,8 +16,31 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'index',
+      components: {
+        default: IndexPage,
+        channelRecommendation: ChannelRecommendation
+      }
+    },
+    {
+      path: '/streamview',
+      name: 'streamview',
+      component: StreamViewPage
+    },
+    {
+      path: '/upload',
+      name: 'upload',
+      component: UploadPage
+    },
+    {
+      path: '/user',
+      name: 'userproperty',
+      component: UserPropertyPage
+    },
+    {
+      path: '/helloworld',
+      name: 'helloworld',
+      component: Helloworld
     }
   ]
 })

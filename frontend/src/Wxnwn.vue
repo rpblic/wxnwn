@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <p>Here is App wxnwn div. Hello Vue!</p>
     <img src="./assets/logo.png">
     <router-view/>
   </div>
@@ -7,12 +8,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'wxnwn'
 }
 </script>
 
 <style>
-#app {
+#wxnwn {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
