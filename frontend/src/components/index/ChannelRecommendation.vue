@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <router-link :to="{ name: 'streamview', params: { channel: 'all' } }">
+  <div id="channelRecommendation">
+    <router-link :to="{ name: 'streamView', params: { channel: 'all' } }">
       Sample Channel
     </router-link>
   </div>
@@ -8,9 +8,12 @@
 
 <script>
 export default {
+  name: 'channelRecommendation',
   data () {
     var recommendedChannels = []
-    return recommendedChannels
+    return {
+      recommendedChannels: recommendedChannels
+    }
   }
 }
 </script>

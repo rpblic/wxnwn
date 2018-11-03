@@ -5,6 +5,8 @@
         <p>Welcome to {{ projectName }}! </p>
         <p><span v-html="projectDescription"></span></p>
         <p>Made by {{ projectAuthor }}.</p>
+
+        <router-view></router-view>
     </div>
 </template>
 
@@ -12,6 +14,7 @@
 var projectName = require('../../assets/projectinfo').projectName()
 var projectDescription = require('../../assets/projectinfo').projectDescription()
 var projectAuthor = require('../../assets/projectinfo').projectAuthor()
+
 export default {
   name: 'index',
   data () {

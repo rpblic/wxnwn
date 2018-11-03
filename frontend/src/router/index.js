@@ -17,14 +17,14 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      components: {
-        default: IndexPage,
-        channelRecommendation: ChannelRecommendation
-      }
+      component: IndexPage,
+      children: [
+        { path: '', component: ChannelRecommendation }
+      ]
     },
     {
       path: '/streamview',
-      name: 'streamview',
+      name: 'streamView',
       component: StreamViewPage
     },
     {
