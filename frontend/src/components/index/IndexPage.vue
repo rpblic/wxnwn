@@ -6,7 +6,7 @@
         <p><span v-html="projectDescription"></span></p>
         <p>Made by {{ projectAuthor }}.</p>
 
-        <router-view></router-view>
+        <router-view id="channelRecommendation"></router-view>
     </div>
 </template>
 
