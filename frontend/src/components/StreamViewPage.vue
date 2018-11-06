@@ -18,6 +18,26 @@ import CommentForm from './upload/comment/CommentForm'
 
 export default {
   name: 'streamview',
+
+  data: function () {
+    return {
+      channelList: [],
+      channelStorylineList: [],
+      activeVideoId: String
+    }
+  },
+
+  methods: {
+    insertChannel: function (channelId) {
+      this.channelList.push(channelId);
+      console.log(channelList);
+    },
+    deleteChannel: function (channelId) {
+      this.channelList = $_.without(this.channelList, channelId);
+      console.log(channelList);
+    }
+  },
+  
   components: {
     ChannelView, AuthorInfo, VideoContents, ChannelStoryline, CommentForm
   }

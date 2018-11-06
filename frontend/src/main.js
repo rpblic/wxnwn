@@ -11,6 +11,9 @@ import Wxnwn from './Wxnwn'
 import router from './router'
 import axios from 'axios'
 
+import _ from 'underscore'
+Object.defineProperty(Vue.prototype, '$_', { value: _ })
+
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
 
