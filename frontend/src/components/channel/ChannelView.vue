@@ -1,12 +1,13 @@
 <template>
-  <div id="authorInfo">
-    <p>Here is AuthorInfo component.</p>
+  <div id="channelView">
+    <p>Here is ChannelView component.</p>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'authorInfo'
+  name: 'channelView'
 }
 </script>
 

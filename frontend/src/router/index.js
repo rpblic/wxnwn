@@ -1,18 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import IndexPage from '@/components/index/IndexPage'
-import ChannelRecommendation from '@/components/index/ChannelRecommendation'
+import IndexPage from '@/components/IndexPage'
 
-import StreamViewPage from '@/components/streamview/StreamViewPage'
-import Channel from '@/components/streamview/Channel'
-import VideoContents from '@/components/streamview/VideoContents'
-import Storyline from '@/components/streamview/Storyline'
-import CommentForm from '@/components/streamview/CommentForm'
+import StreamViewPage from '@/components/StreamViewPage'
 
 import UploadPage from '@/components/upload/UploadPage'
 import UserPropertyPage from '@/components/userproperty/UserPropertyPage'
-import AuthorInfo from '@/components/userproperty/AuthorInfo'
 
 import Helloworld from '@/components/HelloWorld'
 
@@ -24,27 +18,12 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: IndexPage,
-      children: [
-        { path: '', component: ChannelRecommendation }
-      ]
+      component: IndexPage
     },
     {
       path: '/streamview',
       name: 'streamView',
-      component: StreamViewPage,
-      children: [
-        {
-          path: '',
-          components: {
-            channel: Channel,
-            author: AuthorInfo,
-            videoContents: VideoContents,
-            storyline: Storyline,
-            comment: CommentForm
-          }
-        }
-      ]
+      component: StreamViewPage
     },
     {
       path: '/upload',

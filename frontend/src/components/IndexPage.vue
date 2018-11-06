@@ -6,14 +6,16 @@
         <p><span v-html="projectDescription"></span></p>
         <p>Made by {{ projectAuthor }}.</p>
 
-        <router-view id="channelRecommendation"></router-view>
+        <channel-recommendation></channel-recommendation>
     </div>
 </template>
 
 <script>
-var projectName = require('../../assets/projectinfo').projectName()
-var projectDescription = require('../../assets/projectinfo').projectDescription()
-var projectAuthor = require('../../assets/projectinfo').projectAuthor()
+import ChannelRecommendation from './channel/ChannelRecommendation.vue'
+
+var projectName = require('../assets/projectinfo').projectName()
+var projectDescription = require('../assets/projectinfo').projectDescription()
+var projectAuthor = require('../assets/projectinfo').projectAuthor()
 
 export default {
   name: 'index',
@@ -23,6 +25,9 @@ export default {
       projectDescription: projectDescription,
       projectAuthor: projectAuthor
     }
+  },
+  components: {
+    ChannelRecommendation
   }
 }
 </script>

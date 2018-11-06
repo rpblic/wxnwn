@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <p>Here is App wxnwn div. Hello Vue!</p>
-    <img src="./assets/logo.png">
+    <p>Here is App <a href="/">wxnwn</a> div. Hello Vue!</p>
     <router-view/>
   </div>
 </template>
@@ -14,6 +13,7 @@ export default {
 
 <style>
 #wxnwn {
+  display: flex;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
