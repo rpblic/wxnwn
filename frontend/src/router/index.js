@@ -26,6 +26,11 @@ export default new Router({
       component: StreamViewPage
     },
     {
+      path: '/streamview/:id',
+      name: 'streamView',
+      component: StreamViewPage
+    },
+    {
       path: '/upload',
       name: 'upload',
       component: UploadPage

@@ -1,7 +1,11 @@
 <template>
   <div id="channelRecommendation">
-    <router-link :to="{ name: 'streamView', params: { channel: 'all' } }">
-      Sample Channel
+    <router-link
+      v-for="channelList in recommendedChannelsList"
+      v-bind:key="channelList[0]"
+      :to="{ name: 'streamView', params: { channels: channelList } }">
+      {{ channelList }} Channel
+      <br/>
     </router-link>
   </div>
 </template>
@@ -10,9 +14,11 @@
 export default {
   name: 'channelRecommendation',
   data () {
-    var recommendedChannels = []
+    var recommendedChannelsList = [
+      ['test'], ['test2'], ['test2', 'test3']
+    ]
     return {
-      recommendedChannels: recommendedChannels
+      recommendedChannelsList: recommendedChannelsList
     }
   }
 }
