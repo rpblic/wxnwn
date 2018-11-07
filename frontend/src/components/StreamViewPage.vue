@@ -3,7 +3,11 @@
     <p>Here is StreamView page.</p>
     <channel-view></channel-view>
     <author-info></author-info>
-    <video-contents></video-contents>
+    <video-contents
+      v-bind:channelList="channelList"
+      v-bind:channelPreStorylineList="channelPreStorylineList"
+      v-bind:channelPostStorylineList="channelPostStorylineList"
+      v-bind:activeVideoId="activeVideoId"></video-contents>
     <channel-storyline></channel-storyline>
     <comment-form></comment-form>
   </div>
@@ -22,7 +26,8 @@ export default {
   data: function () {
     return {
       channelList: [],
-      channelStorylineList: [],
+      channelPreStorylineList: [],
+      channelPostStorylineList: [],
       activeVideoId: String
     }
   },
@@ -35,9 +40,22 @@ export default {
     deleteChannel: function (channelId) {
       this.channelList = $_.without(this.channelList, channelId);
       console.log(channelList);
+    },
+    setActiveVideoId: function (videoId) {
+      this.activeVideoId = videoId;
+    },
+    getNextVideoId: function () {
+      var nextVideoId = this.channelPostStorylineList.shift();
+      this.channelPreStorylineList.push(activeVideoId);
+      return nextVideoId
+    },
+    getPreviousVideoId: function () {
+      var previousVideoId = this.channelPreStorylineList.pop();
+      this.channelPostStorylineList.unshift(activeVideoId);
+      return previousVideoId
     }
   },
-  
+
   components: {
     ChannelView, AuthorInfo, VideoContents, ChannelStoryline, CommentForm
   }
