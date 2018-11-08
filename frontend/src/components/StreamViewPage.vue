@@ -3,7 +3,7 @@
     <p>Here is StreamView page with channel {{ $route.params.channels }}.</p>
     <channel-view
       v-bind:channelList="channelList"
-      v-bind:activeVideoId="activeVideoId"
+      v-bind:activeVideo="activeVideo"
       v-on:insertChannel="insertChannel"
       v-on:deleteChannel="deleteChannel"
       ></channel-view>
@@ -12,7 +12,7 @@
       v-bind:channelList="channelList"
       v-bind:channelPreStorylineList="channelPreStorylineList"
       v-bind:channelPostStorylineList="channelPostStorylineList"
-      v-bind:activeVideoId="activeVideoId"
+      v-bind:activeVideo="activeVideo"
       ></video-contents>
     <channel-storyline></channel-storyline>
     <comment-form></comment-form>
@@ -26,7 +26,7 @@ import VideoContents from './video/VideoContents'
 import ChannelStoryline from './channel/ChannelStoryline'
 import CommentForm from './upload/comment/CommentForm'
 
-import videoList from '../assets/videolist.json'
+import videoJsonList from '../assets/videolist.json'
 
 export default {
   name: 'streamview',
@@ -36,23 +36,25 @@ export default {
       channelList: [],
       channelPreStorylineList: [],
       channelPostStorylineList: [],
-      activeVideoId: {
-        type: 'video/webm',
-        src: 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm',
-        description: {
-          channel: {
-            channelId: 1,
-            channelName: 'test'
-          }
-        }
-      }
+      activeVideo: {},
+      videoJsonList: videoJsonList
     }
   },
 
   created () {
     if (this.$route.params.channels) {
       this.channelList = this.$route.params.channels
+      console.log(this.channelList)
+      this.channelPreStorylineList = videoJsonList.filter(
+        function (video) {
+          return this.channelList.includes(video.channel)
+        }
+      );
+    } else {
+      this.channelPreStorylineList = videoJsonList
     }
+    console.log(channelPreStorylineList)
+    this.setActiveVideo(this.channelPreStorylineList.shift());
   },
 
   methods: {
@@ -62,17 +64,17 @@ export default {
     deleteChannel: function (channelName) {
       this.channelList = this.$_.without(this.channelList, channelName)
     },
-    setActiveVideoId: function (videoId) {
-      this.activeVideoId = videoId
+    setActiveVideo: function (video) {
+      this.activeVideo = video
     },
     getNextVideoId: function () {
       var nextVideoId = this.channelPostStorylineList.shift()
-      this.channelPreStorylineList.push(this.activeVideoId)
+      this.channelPreStorylineList.push(this.activeVideo)
       return nextVideoId
     },
     getPreviousVideoId: function () {
       var previousVideoId = this.channelPreStorylineList.pop()
-      this.channelPostStorylineList.unshift(this.activeVideoId)
+      this.channelPostStorylineList.unshift(this.activeVideo)
       return previousVideoId
     }
   },

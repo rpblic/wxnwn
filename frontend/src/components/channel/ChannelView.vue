@@ -46,7 +46,7 @@ export default {
       insertedChannelName: String
     }
   },
-  props: ['channelList', 'activeVideoId'],
+  props: ['channelList', 'activeVideo'],
 
   methods: {
     emitInsertChannel: function () {
@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     getActiveChannelName: function () {
-      return this.activeVideoId.description.channel.channelName
+      return this.activeVideo.channel
     }
   }
 }
