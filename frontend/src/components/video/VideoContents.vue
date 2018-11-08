@@ -35,13 +35,22 @@ export default {
         height: '360',
         width: '360',
         playbackRates: [0.7, 1.0, 1.5, 2.0],
-        sources: [{
-          type: 'video/webm',
-          src: 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm'
-        }]
+        sources: []
       }
     }
   },
+
+  props: ['channelList', 'channelPreStorylineList', 'channelPostStorylineList', 'activeVideo'],
+
+  created () {
+    this.playerOptions.sources.push({
+      type: this.activeVideo.type,
+      src: this.activeVideo.sources
+    })
+    console.log(this.activeVideo)
+    console.log(this.playerOptions)
+  },
+
   mounted () {
     console.log('this is current player instance object', this.player)
   },

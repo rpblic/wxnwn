@@ -44,17 +44,12 @@ export default {
   created () {
     if (this.$route.params.channels) {
       this.channelList = this.$route.params.channels
-      console.log(this.channelList)
-      this.channelPreStorylineList = videoJsonList.filter(
-        function (video) {
-          return this.channelList.includes(video.channel)
-        }
-      );
+      this.channelPreStorylineList = videoJsonList.filter(this.isVideoIsIncludedInChannel)
     } else {
       this.channelPreStorylineList = videoJsonList
     }
-    console.log(channelPreStorylineList)
-    this.setActiveVideo(this.channelPreStorylineList.shift());
+    console.log(this.channelPreStorylineList)
+    this.setActiveVideo(this.channelPreStorylineList.shift())
   },
 
   methods: {
@@ -76,6 +71,9 @@ export default {
       var previousVideoId = this.channelPreStorylineList.pop()
       this.channelPostStorylineList.unshift(this.activeVideo)
       return previousVideoId
+    },
+    isVideoIsIncludedInChannel: function (video) {
+      return this.channelList.includes(video.channel)
     }
   },
 
