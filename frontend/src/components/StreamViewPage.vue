@@ -1,13 +1,12 @@
 <template>
   <div id="streamview">
-    <p>Here is StreamView page with channel {{ $route.params.channels }}.</p>
     <channel-view
       v-bind:channelList="channelList"
       v-bind:activeVideo="activeVideo"
       v-on:insertChannel="insertChannel"
       v-on:deleteChannel="deleteChannel"
       ></channel-view>
-    <author-info></author-info>
+    <user-sparkline></user-sparkline>
     <video-contents
       v-bind:channelList="channelList"
       v-bind:channelPreStorylineList="channelPreStorylineList"
@@ -15,6 +14,9 @@
       v-bind:activeVideo="activeVideo"
       v-on:playNextVideo="playNextVideo"
       v-on:playPreviousVideo="playPreviousVideo"
+      v-on:bookmarkVideo="bookmarkVideo"
+      v-on:likeVideo="likeVideo"
+      v-on:downvoteVideo="downvoteVideo"
       ></video-contents>
     <channel-storyline></channel-storyline>
     <comment-form></comment-form>
@@ -23,10 +25,13 @@
 
 <script>
 import ChannelView from './channel/ChannelView'
-import AuthorInfo from './userproperty/AuthorInfo'
+import UserSparkline from './userproperty/UserSparkline'
 import VideoContents from './video/VideoContents'
 import ChannelStoryline from './channel/ChannelStoryline'
 import CommentForm from './upload/comment/CommentForm'
+
+// var VideoControlMethod = require('./video/VideoControl.js')
+// var VideoReactMethod = require('./video/VideoReact.js')
 
 import videoJsonList from '../assets/videolist.json'
 
@@ -90,11 +95,20 @@ export default {
     },
     isVideoIncludedInChannel: function (video) {
       return this.channelList.includes(video.channel)
+    },
+    bookmarkVideo: function () {
+      alert('Bookmarked Video ' + this.activeVideo.title)
+    },
+    likeVideo: function () {
+      alert('Liked Video ' + this.activeVideo.title)
+    },
+    downvoteVideo: function () {
+      alert('Downvoted Video ' + this.activeVideo.title)
     }
   },
 
   components: {
-    ChannelView, AuthorInfo, VideoContents, ChannelStoryline, CommentForm
+    ChannelView, UserSparkline, VideoContents, ChannelStoryline, CommentForm
   }
 }
 </script>

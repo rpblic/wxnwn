@@ -1,8 +1,13 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+
 import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
+
+import Vuesax from 'vuesax'
+import 'vuesax/dist/vuesax.css'
+import { Laue } from 'laue'
 
 // import wxnwn and router
 import Wxnwn from './Wxnwn'
@@ -15,6 +20,8 @@ Object.defineProperty(Vue.prototype, '$_', { value: _ })
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
 Vue.use(VueVideoPlayer, {})
+Vue.use(Vuesax)
+Vue.use(Laue)
 
 /* eslint-disable no-new */
 new Vue({

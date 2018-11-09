@@ -2,38 +2,23 @@
   <div id="channelView">
     <p>Here is ChannelView component.</p>
     <!-- Channel View -->
-    <li v-for="channel in channelList" v-bind:key="channel">
-      <router-link
-        :to="{
-          name: 'streamView',
-          params: {
-            channels: channelList,
-            priority: channel
-          }
-        }">
-        {{ channel }}
-        <!-- Channel Activeness -->
-        <div v-if="channel === activeVideo.channel" style="display:inline">
-          (Active)
-        </div>
-        <div v-else style="display:inline"></div>
-      </router-link>
-      <!-- Channel Delete -->
-      <div style="display:inline">
-        <button
-          v-on:click="emitDeleteChannel(channel)"
-          style="display:inline">
-          Delete
-        </button>
+    <vs-chip
+      v-for="channel in channelList" v-bind:key="channel"
+      closable @click="emitDeleteChannel(channel)">
+      <vs-avatar icon="favorite_border"></vs-avatar>
+      {{ channel }}
+      <!-- Channel Activeness -->
+      <div v-if="channel === activeVideo.channel" style="display:inline">
+        (Active)
       </div>
-    </li>
+      <div v-else style="display:inline"></div>
+    </vs-chip>
     <!-- Channel Insert -->
-    <form
-      id="channelInsertion"
-      v-on:submit.prevent="emitInsertChannel">
-      <input v-model="insertedChannelName" type="text" placeholder="채널을 추가하세요.">
-      <button type="submit">Insert</button>
-    </form>
+    <div id="channelInsertion">
+      <vs-input icon="add" label-placeholder="채널을 추가하세요." v-model="insertedChannelName"
+        v-on:submit.prevent="emitInsertChannel">
+      </vs-input>
+    </div>
   </div>
 </template>
 

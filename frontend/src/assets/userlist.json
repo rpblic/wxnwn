@@ -1,0 +1,31 @@
+[
+  {
+    "userId" : 0,
+    "email" : "rpblic.gyumin@gmail.com",
+    "popularity" : {
+      "test" : 30,
+      "test2" : 50,
+      "test3" : 100
+    },
+    "stacks" : [
+      ["test2", "#008000"],
+      ["test3", "#0087af"],
+      ["test3", "#00d7ff"]
+    ],
+    "authorization" : ["test3"]
+  },
+  {
+    "userId" : 1,
+    "email" : "wxnwn_lover@gmail.com",
+    "popularity" : {
+      "test" : 100,
+      "test2" : 20
+    },
+    "stacks" : [
+      ["test", "#ff0000"],
+      ["test", "#af0000"],
+      ["test2", "#d7d7af"]
+    ],
+    "authorization" : ["test1"]
+  }
+]

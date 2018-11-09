@@ -1,12 +1,13 @@
 <template>
   <div id="channelRecommendation">
-    <router-link
+    <vs-button
       v-for="channelList in recommendedChannelsList"
       v-bind:key="channelList[0]"
-      :to="{ name: 'streamView', params: { channels: channelList } }">
+      :to="{ name: 'streamView', params: { channels: channelList } }"
+      :color="sampleColor" :gradient-color-secondary="sampleColor2" type="gradient">
       {{ channelList }} Channel
       <br/>
-    </router-link>
+    </vs-button>
   </div>
 </template>
 
@@ -18,7 +19,9 @@ export default {
       ['test'], ['test2'], ['test2', 'test3']
     ]
     return {
-      recommendedChannelsList: recommendedChannelsList
+      recommendedChannelsList: recommendedChannelsList,
+      sampleColor: '#c72a75',
+      sampleColor2: '#5252e8'
     }
   }
 }

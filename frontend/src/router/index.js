@@ -6,7 +6,7 @@ import IndexPage from '@/components/IndexPage'
 import StreamViewPage from '@/components/StreamViewPage'
 
 import UploadPage from '@/components/upload/UploadPage'
-import UserPropertyPage from '@/components/userproperty/UserPropertyPage'
+import UserPropertyPage from '@/components/UserPropertyPage'
 
 import Helloworld from '@/components/HelloWorld'
 

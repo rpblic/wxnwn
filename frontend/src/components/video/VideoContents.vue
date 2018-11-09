@@ -12,9 +12,13 @@
                   @statechanged="playerStateChanged($event)"
                   @ready="playerReadied($event)">
     </video-player>
-    <div id= "emitChangeVideo"></div>
-    <button v-on:click="emitPlayPreviousVideo" style="display:inline">Previous</button>
-    <button v-on:click="emitPlayNextVideo" style="display:inline">Next</button>
+    <div id="emitChangeVideo"></div>
+    <vs-button v-on:click="emitPlayPreviousVideo" style="display:inline">Previous</vs-button>
+    <vs-button v-on:click="emitPlayNextVideo" style="display:inline">Next</vs-button>
+    <vs-button v-on:click="emitBookmarkVideo" style="display:inline">Bookmark</vs-button>
+    <vs-button v-on:click="emitLikeVideo" style="display:inline">Like</vs-button>
+    <vs-button v-on:click="emitDownvoteVideo" style="display:inline">Downvote</vs-button>
+
   </div>
 </template>
 <!--
@@ -30,18 +34,17 @@
 <script>
 // Similarly, you can also introduce the plugin resource pack you want to use within the component
 // import 'some-videojs-plugin'
-
 export default {
   data () {
     return {
       playerOptions: {
         // videojs options
-        muted: false,
+        autoplay: 'muted',
         language: 'en',
-        height: '360',
-        width: '360',
         playbackRates: [0.7, 1.0, 1.5, 2.0],
-        sources: []
+        sources: [],
+        fluid: true,
+        aspectRatio: '1:1'
       }
     }
   },
@@ -50,9 +53,12 @@ export default {
 
   created () {
     this.playerOptions.sources = this.activeVideoInfo
-    console.log('this is current player instance object', this.player)
     console.log('active video', this.activeVideo)
     console.log('player option', this.playerOptions)
+  },
+
+  mounted () {
+    console.log('this is current player instance object', this.player)
   },
 
   watch: {
@@ -97,6 +103,15 @@ export default {
     },
     emitPlayNextVideo () {
       this.$emit('playNextVideo')
+    },
+    emitBookmarkVideo () {
+      this.$emit('bookmarkVideo')
+    },
+    emitLikeVideo () {
+      this.$emit('likeVideo')
+    },
+    emitDownvoteVideo () {
+      this.$emit('downvoteVideo')
     }
   }
 }
