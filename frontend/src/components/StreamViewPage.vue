@@ -46,7 +46,7 @@ export default {
   created () {
     if (this.$route.params.channels) {
       this.channelList = this.$route.params.channels
-      this.channelPostStorylineList = videoJsonList.filter(this.isVideoIsIncludedInChannel)
+      this.channelPostStorylineList = videoJsonList.filter(this.isVideoIncludedInChannel)
     } else {
       this.channelPostStorylineList = videoJsonList
     }
@@ -88,7 +88,7 @@ export default {
         alert('No previous video.')
       }
     },
-    isVideoIsIncludedInChannel: function (video) {
+    isVideoIncludedInChannel: function (video) {
       return this.channelList.includes(video.channel)
     }
   },

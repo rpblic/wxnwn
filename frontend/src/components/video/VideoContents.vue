@@ -30,6 +30,7 @@
 <script>
 // Similarly, you can also introduce the plugin resource pack you want to use within the component
 // import 'some-videojs-plugin'
+
 export default {
   data () {
     return {
@@ -47,15 +48,18 @@ export default {
 
   props: ['channelList', 'channelPreStorylineList', 'channelPostStorylineList', 'activeVideo'],
 
-  mounted () {
+  created () {
     this.playerOptions.sources = this.activeVideoInfo
     console.log('this is current player instance object', this.player)
-    console.log(this.activeVideo)
-    console.log(this.playerOptions)
+    console.log('active video', this.activeVideo)
+    console.log('player option', this.playerOptions)
   },
 
-  updated () {
-    this.playerOptions.sources = this.activeVideoInfo
+  watch: {
+    activeVideo: function (newVal, oldVal) {
+      console.log('new active video', newVal)
+      this.player.src(newVal.sources)
+    }
   },
 
   computed: {

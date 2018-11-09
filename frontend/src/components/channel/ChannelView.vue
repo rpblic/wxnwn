@@ -13,7 +13,7 @@
         }">
         {{ channel }}
         <!-- Channel Activeness -->
-        <div v-if="channel === getActiveChannelName" style="display:inline">
+        <div v-if="channel === activeVideo.channel" style="display:inline">
           (Active)
         </div>
         <div v-else style="display:inline"></div>
@@ -54,11 +54,6 @@ export default {
     },
     emitDeleteChannel: function (deletedChannelName) {
       this.$emit('deleteChannel', deletedChannelName)
-    }
-  },
-  computed: {
-    getActiveChannelName: function () {
-      return this.activeVideo.channel
     }
   }
 }
