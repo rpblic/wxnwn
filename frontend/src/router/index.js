@@ -21,12 +21,7 @@ export default new Router({
       component: IndexPage
     },
     {
-      path: '/streamview',
-      name: 'streamView',
-      component: StreamViewPage
-    },
-    {
-      path: '/streamview/:id',
+      path: '/streamview/',
       name: 'streamView',
       component: StreamViewPage
     },

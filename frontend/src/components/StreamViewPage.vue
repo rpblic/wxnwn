@@ -13,6 +13,8 @@
       v-bind:channelPreStorylineList="channelPreStorylineList"
       v-bind:channelPostStorylineList="channelPostStorylineList"
       v-bind:activeVideo="activeVideo"
+      v-on:playNextVideo="playNextVideo"
+      v-on:playPreviousVideo="playPreviousVideo"
       ></video-contents>
     <channel-storyline></channel-storyline>
     <comment-form></comment-form>
@@ -44,12 +46,12 @@ export default {
   created () {
     if (this.$route.params.channels) {
       this.channelList = this.$route.params.channels
-      this.channelPreStorylineList = videoJsonList.filter(this.isVideoIsIncludedInChannel)
+      this.channelPostStorylineList = videoJsonList.filter(this.isVideoIsIncludedInChannel)
     } else {
-      this.channelPreStorylineList = videoJsonList
+      this.channelPostStorylineList = videoJsonList
     }
-    console.log(this.channelPreStorylineList)
-    this.setActiveVideo(this.channelPreStorylineList.shift())
+    console.log(this.channelPostStorylineList)
+    this.setActiveVideo(this.channelPostStorylineList.shift())
   },
 
   methods: {
@@ -64,13 +66,27 @@ export default {
     },
     getNextVideoId: function () {
       var nextVideoId = this.channelPostStorylineList.shift()
-      this.channelPreStorylineList.push(this.activeVideo)
       return nextVideoId
+    },
+    playNextVideo: function () {
+      this.channelPreStorylineList.push(this.activeVideo)
+      if (this.channelPostStorylineList.length) {
+        this.setActiveVideo(this.getNextVideoId())
+      } else {
+        alert('No next video.')
+      }
     },
     getPreviousVideoId: function () {
       var previousVideoId = this.channelPreStorylineList.pop()
-      this.channelPostStorylineList.unshift(this.activeVideo)
       return previousVideoId
+    },
+    playPreviousVideo: function () {
+      this.channelPostStorylineList.unshift(this.activeVideo)
+      if (this.channelPreStorylineList.length) {
+        this.setActiveVideo(this.getPreviousVideoId())
+      } else {
+        alert('No previous video.')
+      }
     },
     isVideoIsIncludedInChannel: function (video) {
       return this.channelList.includes(video.channel)
