@@ -1,13 +1,17 @@
 <template>
   <div id="channelRecommendation">
-    <vs-button
-      v-for="channelList in recommendedChannelsList"
-      v-bind:key="channelList[0]"
-      :to="{ name: 'streamView', params: { channels: channelList } }"
-      :color="sampleColor" :gradient-color-secondary="sampleColor2" type="gradient">
-      {{ channelList }} Channel
-      <br/>
-    </vs-button>
+    <vs-list>
+      <vs-list-item
+        v-for="channelList in recommendedChannelsList"
+        v-bind:key="channelList[0]"
+        v-bind:title="channelList">
+        <vs-button
+          :to="{ name: 'streamView', params: { channels: channelList } }"
+          :color="sampleColor" :gradient-color-secondary="sampleColor2"
+          type="border" icon="navigate_next"
+        ></vs-button>
+      </vs-list-item>
+    </vs-list>
   </div>
 </template>
 
