@@ -1,16 +1,17 @@
 <template>
   <div id="channelRecommendation">
     <vs-list>
-      <vs-list-item
+      <router-link
         v-for="channelList in recommendedChannelsList"
         v-bind:key="channelList[0]"
-        v-bind:title="channelList">
+        v-bind:to="{ name: 'streamView', params: { channels: channelList } }">
+        <vs-list-item v-bind:title="channelList.join(', ')">
         <vs-button
-          :to="{ name: 'streamView', params: { channels: channelList } }"
           :color="sampleColor" :gradient-color-secondary="sampleColor2"
           type="border" icon="navigate_next"
         ></vs-button>
-      </vs-list-item>
+        </vs-list-item>
+      </router-link>
     </vs-list>
   </div>
 </template>

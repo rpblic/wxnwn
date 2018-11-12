@@ -28,7 +28,7 @@ import ChannelView from './channel/ChannelView'
 import UserSparkline from './userproperty/UserSparkline'
 import VideoContents from './video/VideoContents'
 import ChannelStoryline from './channel/ChannelStoryline'
-import CommentForm from './upload/comment/CommentForm'
+import CommentForm from './uploadcomment/CommentForm'
 
 // var VideoControlMethod = require('./video/VideoControl.js')
 // var VideoReactMethod = require('./video/VideoReact.js')

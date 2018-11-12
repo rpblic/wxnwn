@@ -1,10 +1,9 @@
 <template>
   <div id="userSparkline">
-    <p>Here is UserSparkline component.</p>
     <la-cartesian
-      v-bind:bound="[-100,100]"
+      bound= "[-100,100]"
       v-bind:data="userStackPopularityScore"
-      animated height=150 width=600>
+      animated autoresize height="70">
       <la-line
         v-for="(value, key) in userStackColor" v-bind:key="key"
         curve v-bind:prop="key" v-bind:color="value" v-bind:width="2"></la-line>
@@ -21,13 +20,6 @@ export default {
     return {
       sampleUserData: userData[0]
     }
-  },
-
-  mounted () {
-    console.log('userData: ', userData)
-    console.log('Sample User\'s Data: ', this.sampleUserData)
-    console.log('Score is: ', this.userStackPopularityScore)
-    console.log('Color is: ', this.userStackColor)
   },
 
   computed: {
