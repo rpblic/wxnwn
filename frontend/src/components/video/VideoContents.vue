@@ -35,6 +35,7 @@
 // Similarly, you can also introduce the plugin resource pack you want to use within the component
 // import 'some-videojs-plugin'
 export default {
+  name: 'videoContents',
   data () {
     return {
       playerOptions: {
